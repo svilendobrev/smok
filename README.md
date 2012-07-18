@@ -2,7 +2,11 @@ Welcome to smok
 ===============
 
 Translated Python 3 clone: replacing english words (operators, names, funcs, messages - if,else,for,..) with another language (Bulgarian - ако,иначе,за). 
-For kids and people to think and write in their own language
+For kids and people to think and write in their own language, instead of suffer with the alternatives - near-"english", transliteration into latin, mixed latin-cyrilic.
+
+Преведен Питон 3: замества английските думи (оператори, имена и съобщения - if,else,for,..) с друг език (Български - ако,иначе,за). 
+За деца, и хора които искат да мислят и пишат на собствения си език - вместо да се мъчат с алтернативите - почти-"английски", български на латиница или смес от кирилица и латиница.
+
 
 --------
 
@@ -20,7 +24,7 @@ this is attempt at translated python, into using bulgarian keywords - replacing 
   * vim - syntax addition
  * how:
   * recompiles python 3, with appended grammar etc
-  * both english and bulgarian (UTF8) wordings are allowed
+  * both english and bulgarian (UTF8) wordings are usable
   * it's simple, other translations can be done (in other languages or charsets)
 
 
@@ -43,17 +47,39 @@ this is attempt at translated python, into using bulgarian keywords - replacing 
   * прекомпилира се питон 3, с допълнена граматика и пр.
   * достъпни са едновременно и българските (UTF8) и английските имена
   * схемата е проста, може да се направят и други преводи (към езици или кодови таблици)
+
 ```
-   клас филминфо( инфо):
-        @classmethod
-        деф име_от_превод( кл, име ):
-            имена = [ име ]
-            ако   име.endswith('.bg'): имена.append( име[:-3])
-            инако име.endswith('.ru'): имена.append( име[:-3])
-            иначе:
-                имена.append( име+'.bg')
-                имена.append( име+'.ru')
-            върни инфо.име_от_превод( *имена)
+клас Филминфо( Инфо):      #сега: почти преведено / now: almost translated
+	@classmethod
+	деф сглоби_име( кл, име ):
+		имена = [ име ]
+		ако   име.endswith('.bg'): имена.append( име[:-3])
+		инако име.endswith('.ru'): имена.append( име[:-3])
+		иначе:
+			имена.append( име+'.bg')
+			имена.append( име+'.ru')
+		върни инфо.име_от_превод( *имена)
+
+
+клас Филминфо( Инфо):      #TODO: изцяло преведено / fully translated
+    @класметод
+    деф сглоби_име( кл, име ):
+        имена = [ име ]
+        ако   име.завършва('.bg'): имена.допълни( име[:-3])
+        инако име.завършва('.ru'): имена.допълни( име[:-3])
+        иначе: имена.допълни( име)
+        върни Инфо.сглоби_име( *имена)
+
+
+class Filminfo( Info):     #изцяло на английски / fully in english
+    @classmethod
+    def make_name( kl, name):
+        names = [ name]
+        if name.endswith('.bg'): names.append( ime[:-3])
+        elif name.endswith('.ru'): names.append( име[:-3])
+        else: names.append( ime)
+        return Info.make_name( *names)
+
 ```
 
 : http://smok.sourceforge.net/

@@ -1,0 +1,29 @@
+--- old/Parser//pgenmain.c	2010-12-29 01:05:20.000000000 +0200
++++ new/Parser/pgenmain.c	2011-07-11 11:43:48.000000000 +0300
+@@ -22,6 +22,9 @@
+ #include "parsetok.h"
+ #include "pgen.h"
+ 
++#include <locale.h>
++int Py_USELOCALE;
++
+ int Py_DebugFlag;
+ int Py_VerboseFlag;
+ int Py_IgnoreEnvironmentFlag;
+@@ -42,9 +45,16 @@
+     FILE *fp;
+     char *filename, *graminit_h, *graminit_c;
+ 
++    Py_DebugFlag= !!getenv("genDBG");
++    Py_USELOCALE= !!getenv("genUSELOCALE");
++    if (Py_USELOCALE)
++        printf( "loca %s\n", setlocale( LC_ALL, "") );
++
+     if (argc != 4) {
+         fprintf(stderr,
+             "usage: %s grammar graminit.h graminit.c\n", argv[0]);
++        fprintf(stderr,
++            "  do setenv genUSELOCALE=1 or genDBG=1 to turn them on\n");
+         Py_Exit(2);
+     }
+     filename = argv[1];

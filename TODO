@@ -1,0 +1,30 @@
+TODO
+ * + python.vim
+ * + ast.c, .... strcmp, "\w+", '\w'
+ * ast.c/diff also via bg.py
+ * syntax error - points wrong place because of UTF ; see http://bugs.python.org/issue2382
+ * translating:
+   * error messages: Python/errors.c , Objects/exceptions.c
+     * probably via (exposed) dictionary when printing the error, thus keep the Exception intact
+     * strings to map:  look for PyErr_Format
+     * see PyTypeObject.tp_name, .tp_doc;
+   * methods of base structural bricks: str, list, dict, set, ..
+     * append to existing docstrings AND extend the methods with copy but translated names
+     * look for PyMethodDef ..[] and PyDoc_STRVAR: e.g. Objects/dictobject.c#mapp_methods
+     * for now, leave __ (protocol) names alone (e.g. __contains__ etc)
+   * builtin functions - len, locals, isinstance, issubclass, classmethod?, staticmethod?,
+        enumerate, min, max, sum, super, repr, sorted, reversed, open,
+     * Python/bltinmodule.c
+     * super is in Objects/typeobject.c
+   * builtin types - str, bool, int, float, tuple, type, Exception, Warning,
+     * Python/bltinmodule.c#_PyBuiltin_Init(void)
+
+ * some way of help for the translated-mapping in effect
+ * ? multiple alternatives/aliases - easy
+ * ? 1251 / UTF - switching encoding
+
+ * helper for translating such ready code to other languages: extract names/identifiers/comments
+ * docstring/error translations can become core of python-doc-translation - or vice-versa if any
+
+# svilendobrev.com
+# vim:ts=4:sw=4:expandtab

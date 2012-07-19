@@ -47,7 +47,7 @@ p2b = dict( a.strip().split()[:2]
             if a.strip() )
 
 import sys, re
-from util import optz
+from svd_util import optz
 optz.bool( 'lat2cyr', default= False)
 optz.bool( 'grammar', default= False)
 optz.bool( 'vim',     default= False)
